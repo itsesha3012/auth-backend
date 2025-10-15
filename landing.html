@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Shop Landing Page</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #f5f5f5; }
+    header {
+      background: #007BFF;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 24px; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1606813903254-b7c3a8d0c8e2?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover { transform: translateY(-5px); }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .product-card h3 { margin: 10px 0; font-size: 18px; }
+    .product-card p { color: #555; }
+    .product-card button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      background: #007BFF;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .product-card button:hover { background: #0056b3; }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>E-Shop</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Categories</a>
+      <a href="#">Cart</a>
+      <a href="#">Profile</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    Welcome to E-Shop
+  </section>
+
+  <section class="products" id="productContainer">
+    <!-- Product cards will be injected here via JS -->
+  </section>
+
+  <footer>
+    &copy; 2025 E-Shop. All rights reserved.
+  </footer>
+
+  <script>
+    // Dummy products (You can replace these with real data from backend)
+    const products = [
+      { name: "Smartphone", price: "$399", img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" },
+      { name: "Laptop", price: "$799", img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" },
+      { name: "Headphones", price: "$99", img: "https://images.unsplash.com/photo-1585386959984-a415522f13de?auto=format&fit=crop&w=600&q=80" },
+      { name: "Smartwatch", price: "$199", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" },
+      { name: "Camera", price: "$499", img: "https://images.unsplash.com/photo-1519183071298-a2962edb0c37?auto=format&fit=crop&w=600&q=80" },
+      { name: "Shoes", price: "$79", img: "https://images.unsplash.com/photo-1528701800484-685f7ee62cc4?auto=format&fit=crop&w=600&q=80" }
+    ];
+
+    const container = document.getElementById("productContainer");
+    products.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <img src="${product.img}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.price}</p>
+        <button>Add to Cart</button>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
